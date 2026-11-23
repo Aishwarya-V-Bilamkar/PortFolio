@@ -1,0 +1,128 @@
+[
+  {
+    "id": "oracle-java",
+    "title": "Java Fundamentals",
+    "issuer": "Oracle Academy",
+    "issuerShort": "Oracle",
+    "issuerColor": "#C74634",
+    "issuerBg": "#FDECEB",
+    "date": "Certified",
+    "credentialId": "ORACLE-JAVA-FUND",
+    "image": "/assets/certifications/oracle-java.jpeg",
+    "verifyUrl": "https://academy.oracle.com/",
+    "logoKey": "oracle",
+    "learnedPoints": [
+      "Mastered OOP principles: inheritance, polymorphism, and modular class hierarchies.",
+      "Engineered algorithmic solutions using Java Collections, exceptions, and JVM architecture."
+    ],
+    "skills": ["Java Core", "OOP", "Data Structures", "JVM", "Algorithms"]
+  },
+  {
+    "id": "redhat-java",
+    "title": "Red Hat Application Development I: Programming in Java EE (AD183)",
+    "issuer": "Red Hat Academy",
+    "issuerShort": "Red Hat",
+    "issuerColor": "#EE0000",
+    "issuerBg": "#FEE8E8",
+    "date": "Certified",
+    "credentialId": "REDHAT-AD183",
+    "image": "/assets/certifications/redhat-java.jpeg",
+    "verifyUrl": "https://www.redhat.com/en/services/training/ad183-red-hat-application-development-i-programming-in-java-ee",
+    "logoKey": "redhat",
+    "learnedPoints": [
+      "Engineered multi-tier enterprise architectures with CDI dependency injection and JPA persistence.",
+      "Constructed secure, stateless RESTful APIs (JAX-RS) deployed on Red Hat JBoss EAP."
+    ],
+    "skills": ["Java EE", "JBoss EAP", "REST APIs", "JPA / Hibernate", "CDI"]
+  },
+  {
+    "id": "redhat-python",
+    "title": "Python Programming",
+    "issuer": "Red Hat Academy",
+    "issuerShort": "Red Hat",
+    "issuerColor": "#EE0000",
+    "issuerBg": "#FEE8E8",
+    "date": "Certified",
+    "credentialId": "REDHAT-PYTHON",
+    "image": "/assets/certifications/redhat-python.jpeg",
+    "verifyUrl": "https://www.redhat.com/",
+    "logoKey": "redhat",
+    "learnedPoints": [
+      "Built computational fluency across native Python data structures and OOP modules.",
+      "Engineered automated file I/O routines, robust error handling, and performance profiling."
+    ],
+    "skills": ["Python", "OOP", "Automation", "File I/O", "Modular Architecture"]
+  },
+  {
+    "id": "cisco-python",
+    "title": "Python Essentials",
+    "issuer": "Cisco Networking Academy",
+    "issuerShort": "Cisco",
+    "issuerColor": "#049FD9",
+    "issuerBg": "#E6F6FC",
+    "date": "Certified",
+    "credentialId": "CISCO-PY-ESSENTIALS",
+    "image": "/assets/certifications/cisco-python.jpeg",
+    "verifyUrl": "https://www.netacad.com/",
+    "logoKey": "cisco",
+    "learnedPoints": [
+      "Implemented algorithmic control flows, multi-dimensional data handling, and generators.",
+      "Developed modular network automation scripts, payload verifiers, and socket prototypes."
+    ],
+    "skills": ["Python", "Algorithms", "Network Scripting", "Data Structures", "Control Flow"]
+  },
+  {
+    "id": "cisco-c",
+    "title": "C Essentials",
+    "issuer": "Cisco Networking Academy",
+    "issuerShort": "Cisco",
+    "issuerColor": "#049FD9",
+    "issuerBg": "#E6F6FC",
+    "date": "Certified",
+    "credentialId": "CISCO-C-ESSENTIALS",
+    "image": "/assets/certifications/cisco-c.jpeg",
+    "verifyUrl": "https://www.netacad.com/",
+    "logoKey": "cisco",
+    "learnedPoints": [
+      "Mastered low-level systems programming: direct memory addressing and pointer arithmetic.",
+      "Engineered custom data structures with strict manual memory allocation (malloc/free)."
+    ],
+    "skills": ["C Language", "Memory Management", "Pointers", "Data Structures", "Systems Programming"]
+  },
+  {
+    "id": "codechef-500",
+    "title": "CodeChef 500 Difficulty Rating Milestone",
+    "issuer": "CodeChef",
+    "issuerShort": "CodeChef",
+    "issuerColor": "#8B572A",
+    "issuerBg": "#F9F3EE",
+    "date": "Milestone",
+    "credentialId": "CODECHEF-500",
+    "image": "/assets/certifications/codechef-500.jpeg",
+    "verifyUrl": "https://www.codechef.com/",
+    "logoKey": "codechef",
+    "learnedPoints": [
+      "Cultivated rapid algorithmic problem-solving instincts under strict time constraints.",
+      "Analyzed asymptotic complexity (Big-O) and optimized edge-case logic on CodeChef."
+    ],
+    "skills": ["Competitive Programming", "Algorithms", "Time Complexity", "Problem Solving", "CodeChef"]
+  },
+  {
+    "id": "ncet-codeathon",
+    "title": "Codeathon — NCET",
+    "issuer": "Nagarjuna College of Engineering and Technology",
+    "issuerShort": "NCET",
+    "issuerColor": "#1E3A8A",
+    "issuerBg": "#EFF4FE",
+    "date": "Hackathon",
+    "credentialId": "NCET-CODEATHON",
+    "image": "/assets/certifications/ncet-codeathon.jpeg",
+    "verifyUrl": "https://github.com/Aishwarya-V-Bilamkar",
+    "logoKey": "ncet",
+    "learnedPoints": [
+      "Collaborated in high-intensity collegiate hackathon rounds solving complex computational tasks.",
+      "Architected working algorithmic implementations under strict speed and accuracy thresholds."
+    ],
+    "skills": ["Hackathon", "Speed Coding", "Algorithm Design", "Collaboration", "Problem Solving"]
+  }
+]

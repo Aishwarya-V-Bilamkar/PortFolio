@@ -1,0 +1,792 @@
+/* ==========================================================================
+   AISHWARYA V BILAMKAR — CERTIFICATIONS DECK & GALLERY
+   Interactive 3D Deck with FLIP Flying Logos & Responsive Editorial Grid
+   Theme: Warm Ivory (#F5F3EF), Black (#111111), Golden Yellow (#FFB900)
+   ========================================================================== */
+
+.cert-deck-page-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  padding: 0 0 30px 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top-Right Action Controls Bar when Grid is Spread */
+.cert-top-controls-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 14px;
+  padding: 0;
+}
+
+.cert-header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cert-stack-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #ffffff;
+  color: var(--text-dark);
+  border: 1.5px solid var(--accent-gold);
+  border-radius: var(--radius-pill);
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 3px 12px rgba(255, 185, 0, 0.15);
+}
+
+.cert-stack-back-btn:hover {
+  background: var(--accent-gold);
+  color: var(--text-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 185, 0, 0.28);
+}
+
+.cert-count-badge {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border-light);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* ==========================================================================
+   1. DECK STATE: FLOATING 3D CARD STACK
+   ========================================================================== */
+.deck-stage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 580px;
+  padding: 40px 20px;
+  perspective: 1200px;
+  width: 100%;
+}
+
+.deck-interactive-stack {
+  position: relative;
+  width: 350px;
+  height: 480px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: deckFloatBreathe 4.5s ease-in-out infinite;
+}
+
+.deck-interactive-stack:hover {
+  transform: scale(1.03) translateY(-6px);
+}
+
+@keyframes deckFloatBreathe {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(0.4deg);
+  }
+}
+
+/* Stacked backing cards behind the cover card */
+.deck-backing-card {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1.5px solid rgba(255, 185, 0, 0.4);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.deck-backing-1 {
+  transform: rotate(3.5deg) translate(8px, 6px);
+  background: #fbf9f5;
+  border-color: rgba(255, 185, 0, 0.45);
+  z-index: 2;
+}
+
+.deck-backing-2 {
+  transform: rotate(-3.5deg) translate(-8px, 4px);
+  background: #f7f4ee;
+  border-color: rgba(255, 185, 0, 0.35);
+  z-index: 1;
+}
+
+.deck-backing-3 {
+  transform: rotate(7deg) translate(14px, 10px);
+  background: #f3efe6;
+  border-color: rgba(255, 185, 0, 0.25);
+  z-index: 0;
+}
+
+.deck-interactive-stack:hover .deck-backing-1 {
+  transform: rotate(5deg) translate(14px, 8px);
+}
+
+.deck-interactive-stack:hover .deck-backing-2 {
+  transform: rotate(-5deg) translate(-14px, 6px);
+}
+
+.deck-interactive-stack:hover .deck-backing-3 {
+  transform: rotate(9deg) translate(20px, 14px);
+}
+
+/* Front Cover Card */
+.deck-front-card {
+  position: absolute;
+  inset: 0;
+  background: #ffffff;
+  border-radius: 24px;
+  border: 2px solid var(--accent-gold);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(255, 185, 0, 0.3);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  z-index: 5;
+  overflow: hidden;
+  user-select: none;
+}
+
+.deck-card-eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 6px;
+}
+
+.deck-card-title {
+  font-family: var(--font-serif-display);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.deck-card-subtitle {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  max-width: 260px;
+}
+
+/* Badge Cluster in center of cover card */
+.deck-badge-cluster {
+  position: relative;
+  width: 220px;
+  height: 160px;
+  margin: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cluster-logo-wrapper {
+  position: absolute;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.1));
+}
+
+.deck-interactive-stack:hover .cluster-logo-wrapper {
+  transform: scale(1.08);
+}
+
+.cluster-logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1.5px solid rgba(255, 185, 0, 0.45);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  padding: 6px;
+}
+
+/* Center Cluster Golden Sparkle Badge */
+.cluster-center-badge {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--text-dark);
+  color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--accent-gold);
+  z-index: 10;
+}
+
+/* Explore Prompt Pill at bottom of cover card */
+.deck-explore-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--text-dark);
+  color: #ffffff;
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.22);
+  transition: all 0.25s ease;
+}
+
+.deck-explore-pill span.pill-sparkle {
+  color: var(--accent-gold);
+}
+
+.deck-interactive-stack:hover .deck-explore-pill {
+  background: var(--accent-gold);
+  color: var(--text-dark);
+  box-shadow: 0 10px 24px rgba(255, 185, 0, 0.45);
+}
+
+.deck-interactive-stack:hover .deck-explore-pill span.pill-sparkle {
+  color: var(--text-dark);
+}
+
+/* ==========================================================================
+   2. GRID STATE: RESPONSIVE CARDS GALLERY (EDGE-TO-EDGE WIDE GRID)
+   ========================================================================== */
+.cert-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+@media (min-width: 1440px) {
+  .cert-grid-layout {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .cert-grid-layout {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+@media (max-width: 680px) {
+  .cert-grid-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* Individual Certification Card in Grid */
+.cert-grid-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1.5px solid rgba(255, 185, 0, 0.35);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.04);
+  padding: 16px 16px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cert-grid-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-gold);
+  box-shadow: 0 16px 38px rgba(255, 185, 0, 0.16), 0 0 0 1px rgba(255, 185, 0, 0.4);
+}
+
+/* Top Thumbnail Preview Container (Enlarged & Prominent) */
+.cert-card-preview-wrapper {
+  position: relative;
+  width: 100%;
+  height: clamp(270px, 19vw, 320px);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fdfdfc;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: #ffffff;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cert-grid-card:hover .cert-card-img {
+  transform: scale(1.03);
+}
+
+.cert-hover-zoom-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  backdrop-filter: blur(2px);
+}
+
+.cert-grid-card:hover .cert-hover-zoom-overlay {
+  opacity: 1;
+}
+
+/* Corner Issuer Badge (Destination of Flying Logo) */
+.cert-card-badge-target {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1.5px solid var(--accent-gold);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.cert-card-badge-target.has-bounced {
+  animation: badgeBounceIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes badgeBounceIn {
+  0% {
+    transform: scale(0.6) rotate(-15deg);
+  }
+  60% {
+    transform: scale(1.22) rotate(6deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Card Header: Title & Issuer (Streamlined) */
+.cert-card-meta-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.cert-status-pill {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 185, 0, 0.14);
+  color: #7A5500;
+  border: 1px solid rgba(255, 185, 0, 0.35);
+}
+
+.cert-id-tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-subtle);
+  font-weight: 600;
+}
+
+.cert-card-title {
+  font-family: var(--font-serif-display);
+  font-size: 16.5px;
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.25;
+  margin-bottom: 3px;
+}
+
+.cert-card-issuer {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+/* "What I Learned" Key Points List (Tightened & Sleek) */
+.cert-learned-section {
+  border-top: 1px solid var(--border-light);
+  padding-top: 8px;
+  margin-top: auto;
+}
+
+.cert-learned-heading {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dark);
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cert-learned-heading-icon {
+  color: var(--accent-gold);
+}
+
+.cert-learned-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cert-learned-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 11px;
+  line-height: 1.35;
+  color: #444444;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.cert-learned-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cert-learned-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+/* Card Bottom Actions (Compact) */
+.cert-card-bottom-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border-light);
+}
+
+.cert-view-modal-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: transparent;
+  color: var(--text-dark);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-pill);
+  padding: 5px 12px;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cert-view-modal-btn:hover {
+  background: var(--text-dark);
+  color: #ffffff;
+  border-color: var(--text-dark);
+}
+
+.cert-verify-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #8A6200;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.cert-verify-link-btn:hover {
+  color: var(--text-dark);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   3. THE FLYING LOGO ANIMATION OVERLAY
+   ========================================================================== */
+.flying-logos-overlay-portal {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  overflow: visible;
+}
+
+.flying-logo-projectile {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 2px solid var(--accent-gold);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  will-change: transform, opacity;
+  transition: transform 0.05s linear;
+}
+
+/* ==========================================================================
+   4. LIGHTBOX MODAL
+   ========================================================================== */
+.cert-lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 17, 17, 0.88);
+  backdrop-filter: blur(10px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeInModal 0.25s ease-out forwards;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.cert-lightbox-dialog {
+  position: relative;
+  background: #ffffff;
+  border-radius: 24px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+  border: 2px solid var(--accent-gold);
+  animation: zoomInModal 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes zoomInModal {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.cert-lightbox-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border-light);
+  background: #faf8f5;
+}
+
+.cert-lightbox-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cert-lightbox-title {
+  font-family: var(--font-serif-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.cert-lightbox-close-btn {
+  background: rgba(0, 0, 0, 0.06);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cert-lightbox-close-btn:hover {
+  background: var(--text-dark);
+  color: #ffffff;
+  transform: rotate(90deg);
+}
+
+.cert-lightbox-body {
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f3ef;
+}
+
+.cert-lightbox-full-img {
+  max-width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  border: 1px solid var(--border-light);
+}
+
+.cert-lightbox-footer {
+  padding: 14px 24px;
+  background: #ffffff;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cert-lightbox-credential-meta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.cert-lightbox-verify-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-gold);
+  color: var(--text-dark);
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(255, 185, 0, 0.3);
+}
+
+.cert-lightbox-verify-btn:hover {
+  background: var(--accent-gold-hover);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   5. RESPONSIVE BREAKPOINTS & ACCESSIBILITY
+   ========================================================================== */
+@media (max-width: 768px) {
+  .deck-interactive-stack {
+    width: 290px;
+    height: 420px;
+  }
+  .deck-front-card {
+    padding: 24px 20px;
+  }
+  .deck-card-title {
+    font-size: 26px;
+  }
+  .deck-badge-cluster {
+    width: 180px;
+    height: 130px;
+  }
+  .cluster-logo-item {
+    width: 44px;
+    height: 44px;
+  }
+  .cert-card-preview-wrapper {
+    height: 240px;
+  }
+  .cert-lightbox-dialog {
+    max-height: 96vh;
+    border-radius: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cert-card-preview-wrapper {
+    height: 220px;
+  }
+  .cert-grid-card {
+    padding: 12px 12px 14px 12px;
+  }
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .deck-interactive-stack {
+    animation: none !important;
+  }
+  .cert-grid-card,
+  .cert-stack-back-btn,
+  .cert-card-badge-target {
+    transition: opacity 0.2s ease !important;
+    animation: none !important;
+  }
+  .flying-logo-projectile {
+    display: none !important;
+  }
+}
+
